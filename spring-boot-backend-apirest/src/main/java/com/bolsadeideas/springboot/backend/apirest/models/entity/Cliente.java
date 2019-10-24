@@ -21,7 +21,7 @@ public class Cliente implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String name;
+	private String nombre;
 	private String apellido;
 	private String email;
 	
@@ -30,17 +30,17 @@ public class Cliente implements Serializable {
 	private Date createAt;
 
 	/**
-	 * @return the name
+	 * @return the nombre
 	 */
-	public String getName() {
-		return name;
+	public String getNombre() {
+		return nombre;
 	}
 
 	/**
-	 * @param name the name to set
+	 * @param nombre the nombre to set
 	 */
-	public void setName(String name) {
-		this.name = name;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	/**
