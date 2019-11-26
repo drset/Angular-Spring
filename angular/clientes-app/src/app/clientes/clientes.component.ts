@@ -48,7 +48,7 @@ export class ClientesComponent implements OnInit {
             swalWithBootstrapButtons.fire(
               'Eliminado!',
               `Cliente ${cliente.nombre} eliminado con éxito.`,
-              'éxito'
+              'success'
             )
           }
         )
