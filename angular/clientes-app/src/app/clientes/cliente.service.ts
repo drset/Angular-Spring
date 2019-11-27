@@ -25,7 +25,7 @@ export class ClienteService {
 
   create(cliente: Cliente) : Observable<Cliente>{
     return this.http.post(this.urlEndPoint, cliente, {headers: this.httpHeaders} ).pipe(
-      map( (response): any => response.cliente as Cliente),
+      map( (response: any) => response.cliente as Cliente),
       catchError(e => {
         console.error(e.error.mensaje);
         swal.fire(e.error.mensaje, e.error.error, 'error');
