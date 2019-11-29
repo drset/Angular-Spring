@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Cliente } from './cliente';
 import { ClienteService } from './cliente.service';
 import Swal from 'sweetalert2';
+import {tap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-clientes',
@@ -17,7 +18,14 @@ export class ClientesComponent implements OnInit {
 
   ngOnInit() {
     //subscribe implica que el contenido se refresca solo cuando cambia.
-    this.clienteService.getClientes().subscribe(
+    this.clienteService.getClientes().pipe(
+      tap(clientes => {
+        console.log('Tap3');
+        clientes.forEach(cliente => {
+          console.log(cliente.nombre);
+        });
+      })
+    ).subscribe(
       // => es la forma de declarar una funcion anonima.
       clientes => this.clientes = clientes
     );

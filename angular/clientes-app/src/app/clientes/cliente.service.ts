@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
+import {formatDate, DatePipe} from '@angular/common'
 import { CLIENTES } from './clientes.json';
 import { Cliente } from './cliente';
 import { Observable, throwError } from 'rxjs';
 import { of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map, catchError } from 'rxjs/operators';
+import { map, catchError, tap } from 'rxjs/operators';
 import swal from 'sweetalert2';
 import { Router } from '@angular/router';
 
@@ -19,7 +20,32 @@ export class ClienteService {
   getClientes(): Observable<Cliente[]> {
     //return of(CLIENTES);
     return this.http.get(this.urlEndPoint).pipe(
-      map(response => response as Cliente[])
+      tap(response => {
+        let clientes = response as Cliente[];
+        clientes.forEach(
+          cliente => {
+            console.log(cliente.nombre);
+          }
+        )
+      }),
+      map(response => {
+        let clientes = response as Cliente[];
+         return clientes.map(cliente => {
+           cliente.nombre = cliente.nombre.toUpperCase();
+           //let datePipe = new DatePipe('es');
+           //cliente.createAt = datePipe.transform(cliente.createAt, 'EEEE dd, MMMM yyyy'); //formatDate(cliente.createAt, 'dd-MM-yyyy', 'en-US')clientes.createAt
+
+           return cliente;
+         });
+      }),
+      tap(response => {
+        response.forEach(
+          cliente => {
+            console.log('Tap2');
+            console.log(cliente.nombre);
+          }
+        )
+      })
     );
   }
 
@@ -58,7 +84,7 @@ export class ClienteService {
         if(e.status==400){
           return throwError(e);
         }
-        
+
         console.error(e.error.mensaje);
         swal.fire(e.error.mensaje, e.error.error, 'error');
         return throwError(e);
