@@ -3,6 +3,7 @@ import { Cliente } from './cliente';
 import { ClienteService } from './cliente.service';
 import Swal from 'sweetalert2';
 import {tap} from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router'
 
 @Component({
   selector: 'app-clientes',
@@ -11,24 +12,39 @@ import {tap} from 'rxjs/operators';
 export class ClientesComponent implements OnInit {
 
   clientes: Cliente[];
-
-  constructor(private clienteService: ClienteService) {
+  paginador: any;
+  
+  constructor(private clienteService: ClienteService,
+    private activatedRoute: ActivatedRoute) {
 
   }
 
   ngOnInit() {
     //subscribe implica que el contenido se refresca solo cuando cambia.
-    this.clienteService.getClientes().pipe(
-      tap(clientes => {
-        console.log('Tap3');
-        clientes.forEach(cliente => {
-          console.log(cliente.nombre);
-        });
-      })
-    ).subscribe(
-      // => es la forma de declarar una funcion anonima.
-      clientes => this.clientes = clientes
-    );
+
+    this.activatedRoute.paramMap.subscribe( params => {
+      let page:number = +params.get('page');
+
+      if(!page){
+          page = 0;
+      }
+
+      this.clienteService.getClientes(page).pipe(
+        tap(response => {
+          console.log('Tap3');
+          (response.content as Cliente[]).forEach(cliente => {
+            console.log(cliente.nombre);
+          });
+        })
+      ).subscribe(
+        // => es la forma de declarar una funcion anonima.
+        response => {
+          this.clientes = response.content as Cliente[];
+          this.paginador = response;
+        }
+      );
+    }
+  );
   }
 
   delete(cliente: Cliente): void {
