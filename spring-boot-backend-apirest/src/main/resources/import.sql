@@ -13,8 +13,8 @@ INSERT INTO clientes (nombre, apellido, email, create_at, region_id) VALUES ("Li
 INSERT INTO clientes (nombre, apellido, email, create_at, region_id) VALUES ("Maggie", "Simpson", "Maggie@gmail.com", "1995-07-10",5);
 
 /* Create Test Users For Spring Security With Oauth and JWT */
-INSERT INTO usuarios (username, password, enabled) VALUES ('admin', '$2a$10$RaHCXc8dZi77PV1.ZYGkPuKPPkgjAi3RhGd.bM6WiDXb9UhS/1BEq', 1);
-INSERT INTO usuarios (username, password, enabled) VALUES ('set', '$2a$10$knT9Man41arrJxgHBW8PXuI7YEtlLf5moPPWW0MHGaFVppiiZejMa', 1);
+INSERT INTO usuarios (username, password, enabled, nombre, apellido, email) VALUES ('admin', '$2a$10$RaHCXc8dZi77PV1.ZYGkPuKPPkgjAi3RhGd.bM6WiDXb9UhS/1BEq', 1, "Chuck", "Johnnes", "cj@gmail.com");
+INSERT INTO usuarios (username, password, enabled, nombre, apellido, email) VALUES ('set', '$2a$10$knT9Man41arrJxgHBW8PXuI7YEtlLf5moPPWW0MHGaFVppiiZejMa', 1, "Bobby", "Rodes", "bbRodes@gmail.com");
 
 INSERT INTO  roles (nombre) VALUES ('ROLE_ADMIN');
 INSERT INTO  roles (nombre) VALUES ('ROLE_USER');
