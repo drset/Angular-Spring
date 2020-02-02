@@ -4,7 +4,7 @@ import { ClienteService } from '../cliente.service';
 import Swal from 'sweetalert2';
 import { HttpEventType } from '@angular/common/http';
 import { ModalService } from './modal.service';
-
+import { AuthService } from '../../usuarios/auth.service';
 
 @Component({
   selector: 'detalle-cliente',
@@ -17,7 +17,9 @@ export class DetalleComponent implements OnInit {
   private fotoSeleccionada: File;
   progreso: number = 0;
 
+  //authService is used to hide buttons in the views based on roles
   constructor(private clienteService: ClienteService,
+    private authService: AuthService,
     private modalService: ModalService) { }
 
   ngOnInit() {

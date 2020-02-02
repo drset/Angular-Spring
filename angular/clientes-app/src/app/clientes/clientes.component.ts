@@ -4,7 +4,8 @@ import { ClienteService } from './cliente.service';
 import { ModalService } from './detalle/modal.service';
 import Swal from 'sweetalert2';
 import {tap} from 'rxjs/operators';
-import { ActivatedRoute } from '@angular/router'
+import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '../usuarios/auth.service';
 
 @Component({
   selector: 'app-clientes',
@@ -15,9 +16,11 @@ export class ClientesComponent implements OnInit {
   clientes: Cliente[];
   paginador: any;
   clienteSeleccionado:Cliente;
-
+  
+  //authService is used to hide buttons in the views based on roles
   constructor(private clienteService: ClienteService,
     private modalService: ModalService,
+    private authService: AuthService,
     private activatedRoute: ActivatedRoute) {
 
   }
