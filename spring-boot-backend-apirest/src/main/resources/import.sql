@@ -23,6 +23,25 @@ INSERT INTO usuarios_roles (usuario_id, role_id) VALUES (1,1)
 INSERT INTO usuarios_roles (usuario_id, role_id) VALUES (1,2)
 INSERT INTO usuarios_roles (usuario_id, role_id) VALUES (2,2)
 
+/* Populate tabla productos */
+INSERT INTO productos (nombre, precio, create_at) VALUES ("Panasonic Pantalla LCD", 259990, NOW());
+INSERT INTO productos (nombre, precio, create_at) VALUES ("Sony Camara", 123490, NOW());
+INSERT INTO productos (nombre, precio, create_at) VALUES ("Apple IPOD", 1499990, NOW());
+INSERT INTO productos (nombre, precio, create_at) VALUES ("Sony Notebook", 37990, NOW());
+INSERT INTO productos (nombre, precio, create_at) VALUES ("HP Muntifuncion", 359990, NOW());
+INSERT INTO productos (nombre, precio, create_at) VALUES ("Motorola X", 159990, NOW());
+INSERT INTO productos (nombre, precio, create_at) VALUES ("Nintendo Wii", 858990, NOW());
+INSERT INTO productos (nombre, precio, create_at) VALUES ("Equipo Sony 600w", 957770, NOW());
+INSERT INTO productos (nombre, precio, create_at) VALUES ("LG Ultrawide 34 pulgadas", 656920, NOW());
+
+/* Creamos algunas facturas */
+INSERT INTO facturas (descripcion, observacion, cliente_id, create_at) VALUES ("Factura equipos de officina", null, 1, NOW());
+INSERT INTO facturas_items (cantidad, factura_id, producto_id) VALUES (1, 1, 1);
+INSERT INTO facturas_items (cantidad, factura_id, producto_id) VALUES (2, 1, 4);
+INSERT INTO facturas_items (cantidad, factura_id, producto_id) VALUES (1, 1, 5);
+
+INSERT INTO facturas (descripcion, observacion, cliente_id, create_at) VALUES ("Factura Monitor", "Me compre un monitor de 34", 1, NOW());
+INSERT INTO facturas_items (cantidad, factura_id, producto_id) VALUES (1, 2, 9);
 
 
 
