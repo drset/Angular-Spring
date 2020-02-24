@@ -68,7 +68,7 @@
           <div class="col-sm-6">
             <!--<input type="date" class="form-control" [(ngModel)]="cliente.createAt" name="createAt" > -->
             <select [compareWith]="compararRegion" class="form-control" [(ngModel)]="cliente.region" name="region" style="width:500px;">
-              <<option [ngValue]="undefine">--- selecionar una región ---</option>
+              <option [ngValue]="undefine">--- selecionar una región ---</option>
               <option *ngFor="let region of regiones" [ngValue]="region">{{region.nombre}}</option>
             </select>
 

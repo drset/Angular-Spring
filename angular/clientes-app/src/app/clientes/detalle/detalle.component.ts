@@ -16,13 +16,13 @@ import { Factura } from '../../facturas/models/factura';
 export class DetalleComponent implements OnInit {
   @Input() cliente: Cliente;
   titulo: string = "Detalle del cliente";
-  private fotoSeleccionada: File;
+  public fotoSeleccionada: File;
   progreso: number = 0;
 
   //authService is used to hide buttons in the views based on roles
   constructor(private clienteService: ClienteService,
-    private authService: AuthService,
-    private modalService: ModalService,
+    public authService: AuthService,
+    public modalService: ModalService,
     private facturaService: FacturaService ) { }
 
   ngOnInit() {

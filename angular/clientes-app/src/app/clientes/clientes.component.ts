@@ -16,11 +16,11 @@ export class ClientesComponent implements OnInit {
   clientes: Cliente[];
   paginador: any;
   clienteSeleccionado:Cliente;
-  
+
   //authService is used to hide buttons in the views based on roles
   constructor(private clienteService: ClienteService,
-    private modalService: ModalService,
-    private authService: AuthService,
+    public modalService: ModalService,
+    public authService: AuthService,
     private activatedRoute: ActivatedRoute) {
 
   }
