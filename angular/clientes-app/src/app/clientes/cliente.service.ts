@@ -9,11 +9,12 @@ import { HttpClient, HttpRequest, HttpEvent } from '@angular/common/http';
 import { map, catchError, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import {AuthService} from '../usuarios/auth.service';
+import {URL_BACKEND} from '../config/config';
 
 @Injectable()
 export class ClienteService {
 
-  private urlEndPoint:string = 'http://localhost:8881/api/clientes';
+  private urlEndPoint:string = URL_BACKEND + '/api/clientes';
 
   constructor(private http: HttpClient, private router: Router) { }
 
